@@ -1,44 +1,43 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Security.Claims;
 using System.Threading;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Authentication;
 using Microsoft.AspNetCore.Http.Features;
-using static PeanutButter.RandomGenerators.RandomValueGen;
+
 
 namespace MockHttpContextHelpers
 {
     public class FakeHttpContext : HttpContext
     {
         public FakeHttpContext(
+            IFeatureCollection featureCollection,
             HttpRequest httpRequest, 
             HttpResponse httpResponse,
             ConnectionInfo connectionInfo,
-            ClaimsPrincipal claimsPrincipal,
-            FeatureCollection featureCollection,
             WebSocketManager webSocketManager,
+            AuthenticationManager authenticationManager,
+            ClaimsPrincipal user,
             IDictionary<object, object?> items,
             IServiceProvider requestServices,
             CancellationToken requestAborted,
             string traceIdentifier,
-            ISession session,
-            AuthenticationManager authenticationManager)
+            ISession session
+            )
         {
+            Features = featureCollection;
             Request = httpRequest;
             Response = httpResponse;
-            Features = featureCollection;
-            User = claimsPrincipal;
             Connection = connectionInfo;
             WebSockets = webSocketManager;
+            Authentication = authenticationManager;
+            User = user;
             Items = items;
             RequestServices = requestServices;
             RequestAborted = requestAborted;
             TraceIdentifier = traceIdentifier;
             Session = session;
-            Authentication = authenticationManager;
         }
         
         public override void Abort()

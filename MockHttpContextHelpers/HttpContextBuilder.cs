@@ -1,59 +1,115 @@
+using System;
+using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Authentication;
+using Microsoft.AspNetCore.Http.Features;
 
 namespace MockHttpContextHelpers
 {
     public class HttpContextBuilder
     {
-        public HttpContextBuilder()
-        {
-            
-        }
-        
-        private HttpRequest _httpRequest;
-        private HttpResponse _httpResponse;
-        private ConnectionInfo _connectionInfo;
+        private IFeatureCollection _features;
+        private HttpRequest _request;
+        private HttpResponse _response;
+        private ConnectionInfo _connection;
+        private WebSocketManager _webSockets;
+        private AuthenticationManager _authentication;
         private ClaimsPrincipal _user;
+        private IDictionary<object, object?> _items;
+        private IServiceProvider _requestServices;
+        private CancellationToken _requestAborted;
+        private string _traceIdentifier;
+        private ISession _session;
+
+        public HttpContextBuilder WithFeatures(IFeatureCollection featureCollection)
+        {
+            _features = featureCollection;
+            return this;
+        }
 
         public HttpContextBuilder WithRequest(HttpRequest httpRequest)
         {
-            _httpRequest = httpRequest;
+            _request = httpRequest;
             return this;
         }
 
         public HttpContextBuilder WithResponse(HttpResponse httpResponse)
         {
-            _httpResponse = httpResponse;
+            _response = httpResponse;
             return this;
         }
 
         public HttpContextBuilder WithConnectionInfo(ConnectionInfo connectionInfo)
         {
-            _connectionInfo = connectionInfo;
+            _connection = connectionInfo;
             return this;
         }
 
+        public HttpContextBuilder WithWebSocketManager(WebSocketManager webSocketManager)
+        {
+            _webSockets = webSocketManager;
+            return this;
+        }
+
+        public HttpContextBuilder WithAuthenticationManager(AuthenticationManager authenticationManager)
+        {
+            _authentication = authenticationManager;
+            return this;
+        }
+        
         public HttpContextBuilder WithClaimsPrincipal(ClaimsPrincipal claimsPrincipal)
         {
             _user = claimsPrincipal;
             return this;
         }
 
+        public HttpContextBuilder WithItems(Dictionary<object, object?> items)
+        {
+            _items = items;
+            return this;
+        }
+
+        public HttpContextBuilder WithServiceProvider(IServiceProvider serviceProvider)
+        {
+            _requestServices = serviceProvider;
+            return this;
+        }
+
+        public HttpContextBuilder WithCancellationToken(CancellationToken token)
+        {
+            _requestAborted = token;
+            return this;
+        }
+
+        public HttpContextBuilder WithTraceIdentifier(string traceIdentifier)
+        {
+            _traceIdentifier = traceIdentifier;
+            return this;
+        }
+
+        public HttpContextBuilder WithSession(ISession session)
+        {
+            _session = session;
+            return this;
+        }
+
         public FakeHttpContext Build()
         {
-            return new FakeHttpContext(_httpRequest, 
-                _httpResponse, 
-                _connectionInfo, 
-                _user, 
-                null, 
-                null, 
-                null, 
-                null, 
-                CancellationToken.None, 
-                null, 
-                null, 
-                null);
+            return new FakeHttpContext(
+                _features,
+                _request,
+                _response,
+                _connection,
+                _webSockets,
+                _authentication,
+                _user,
+                _items,
+                _requestServices,
+                _requestAborted,
+                _traceIdentifier,
+                _session);
         }
     }
 }
