@@ -2,6 +2,23 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
+        <Authors>Caybo Kotze</Authors>
+        <Company>Merge Digital</Company>
+        <Description>Fake Http Context builder providers some builder to be able to build HttpContext, HttpRequest, HttpResponse and ConnectionInfo class instances. (Uses AspNetCore.Http)</Description>
+        <RepositoryUrl>https://github.com/caybokotze/FakeHttpContextBuilders</RepositoryUrl>
+        <RepositoryType>github</RepositoryType>
+        <PackageTags>HttpContext, HttpResponse, HttpRequest, ConnectionInfo</PackageTags>
+        <PackageId>Dapper.CQRS</PackageId>
+        <PackageReleaseNotes>First stable release</PackageReleaseNotes>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+        <Copyright>A package of Merge Digital</Copyright>
+        <PackageLicenseFile>license.txt</PackageLicenseFile>
+        <LangVersion>9</LangVersion>
+        <PackageVersion>1.0.0</PackageVersion>
+        <Title>FakeHttpContextBuilders</Title>
+        <PackageProjectUrl>https://github.com/caybokotze/FakeHttpContextBuilders</PackageProjectUrl>
+        <AssemblyName>FakeHttpContextBuilders</AssemblyName>
+        <RootNamespace>FakeHttpContextBuilders</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -9,7 +26,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <None Update="license.txt">
+      <None Include="license.txt">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
     </ItemGroup>
