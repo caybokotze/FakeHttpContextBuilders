@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Internal;
 
-namespace MockHttpContextHelpers
+namespace FakeHttpContextBuilders
 {
     public class HttpRequestBuilder
     {
