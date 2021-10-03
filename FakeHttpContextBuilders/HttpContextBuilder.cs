@@ -15,9 +15,11 @@ namespace FakeHttpContextBuilders
         private HttpResponse _response;
         private ConnectionInfo _connection;
         private WebSocketManager _webSockets;
+#pragma warning disable 618
         private AuthenticationManager _authentication;
+#pragma warning restore 618
         private ClaimsPrincipal _user;
-        private IDictionary<object, object?> _items;
+        private IDictionary<object, object> _items;
         private IServiceProvider _requestServices;
         private CancellationToken _requestAborted;
         private string _traceIdentifier;
@@ -53,7 +55,9 @@ namespace FakeHttpContextBuilders
             return this;
         }
 
+#pragma warning disable 618
         public HttpContextBuilder WithAuthenticationManager(AuthenticationManager authenticationManager)
+#pragma warning restore 618
         {
             _authentication = authenticationManager;
             return this;
@@ -65,7 +69,7 @@ namespace FakeHttpContextBuilders
             return this;
         }
 
-        public HttpContextBuilder WithItems(Dictionary<object, object?> items)
+        public HttpContextBuilder WithItems(Dictionary<object, object> items)
         {
             _items = items;
             return this;

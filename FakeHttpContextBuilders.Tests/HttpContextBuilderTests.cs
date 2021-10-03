@@ -47,7 +47,9 @@ namespace FakeHttpContextBuilders.Tests
             Expect(httpContext.Response).To.Be.Null();
             Expect(httpContext.Features).Not.To.Be.Null();
             Expect(httpContext.Session).To.Be.Null();
+#pragma warning disable 618
             Expect(httpContext.Authentication).To.Be.Null();
+#pragma warning restore 618
             Expect(httpContext.RequestServices).To.Be.Null();
             Expect(httpContext.TraceIdentifier).To.Be.Equal.To("");
             Expect(httpContext.WebSockets).Not.To.Be.Null();

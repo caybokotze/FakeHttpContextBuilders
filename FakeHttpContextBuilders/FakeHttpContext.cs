@@ -32,7 +32,9 @@ namespace FakeHttpContextBuilders
             Response = httpResponse;
             Connection = connectionInfo;
             WebSockets = webSocketManager;
+#pragma warning disable 612
             Authentication = authenticationManager;
+#pragma warning restore 612
             User = user;
             Items = items;
             RequestServices = requestServices;
@@ -52,6 +54,7 @@ namespace FakeHttpContextBuilders
         public override ConnectionInfo Connection { get; }
         public override WebSocketManager WebSockets { get; }
 #pragma warning disable 618
+        [Obsolete]
         public override AuthenticationManager Authentication { get; }
 #pragma warning restore 618
         public override ClaimsPrincipal User { get; set; }
