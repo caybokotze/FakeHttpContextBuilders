@@ -7,6 +7,25 @@ namespace FakeHttpContextBuilders
 {
     public class FakeHttpResponse : HttpResponse
     {
+        public FakeHttpResponse(HttpContext httpContext,
+            int statusCode,
+            IHeaderDictionary headers,
+            Stream body,
+            long? contentLength,
+            string contentType,
+            IResponseCookies cookies,
+            bool hasStarted)
+        {
+            HttpContext = httpContext;
+            StatusCode = statusCode;
+            Headers = headers;
+            Body = body;
+            ContentLength = contentLength;
+            ContentType = contentType;
+            Cookies = cookies;
+            HasStarted = hasStarted;
+        }
+        
         public override void OnStarting(Func<object, Task> callback, object state)
         {
             throw new NotImplementedException();

@@ -15,5 +15,14 @@ namespace FakeHttpContextBuilders.Tests
             // assert
             Expect(typeof(FakeHttpResponse).IsAssignableTo(typeof(HttpResponse)));
         }
+
+        [Test]
+        public void ShouldBeValidResponse()
+        {
+            // arrange
+            
+            // act
+            // assert
+        }
     }
 }

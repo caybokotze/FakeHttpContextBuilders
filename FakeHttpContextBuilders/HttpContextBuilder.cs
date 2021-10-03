@@ -95,7 +95,7 @@ namespace FakeHttpContextBuilders
             return this;
         }
 
-        public FakeHttpContext Build()
+        public HttpContext Build()
         {
             return new FakeHttpContext(
                 _features,

@@ -126,7 +126,7 @@ namespace FakeHttpContextBuilders
             return this;
         }
         
-        public FakeHttpRequest Build()
+        public HttpRequest Build()
         {
             return new FakeHttpRequest(
                 _httpContext, 
