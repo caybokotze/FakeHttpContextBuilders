@@ -84,6 +84,7 @@ namespace FakeHttpContextBuilders.Tests
                     .WithProtocol("HTTPS")
                     .WithContentLength(4)
                     .HasFormContentType(false)
+                    .WithContentType("JSON")
                     .Build())
                 .WithResponse(new HttpResponseBuilder()
                     .WithHttpStatusCode(200)
@@ -95,6 +96,7 @@ namespace FakeHttpContextBuilders.Tests
                     .HasStarted(true)
                     .WithContentLength(34)
                     .WithContentType("XML")
+                    .WithBody(new MemoryStream(Encoding.ASCII.GetBytes("another stream...")))
                     .WithResponseCookies(new ResponseCookies(new HeaderDictionary(new Dictionary<string, StringValues>
                     {
                         {"red", "wine"}
@@ -135,6 +137,7 @@ namespace FakeHttpContextBuilders.Tests
             Expect(httpContext.Response.HasStarted).To.Be.True();
             Expect(httpContext.Response.ContentLength).To.Be.Equal.To(34);
             Expect(httpContext.Response.ContentType).To.Be.Equal.To("XML");
+            Expect(new StreamReader(httpContext.Response.Body).ReadToEnd()).To.Be.Equal.To("another stream...");
             Expect(httpContext.Response.Cookies).To.Be.Deep.Equal.To(
                 new ResponseCookies(
                 new HeaderDictionary(
@@ -153,6 +156,7 @@ namespace FakeHttpContextBuilders.Tests
             Expect(httpContext.Request.ContentLength).To.Be.Equal.To(4);
             Expect(httpContext.Request.Protocol).To.Be.Equal.To("HTTPS");
             Expect(httpContext.Request.HasFormContentType).To.Be.False();
+            Expect(httpContext.Request.ContentType).To.Be.Equal.To("JSON");
         }
     }
 }
