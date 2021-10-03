@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakeHttpContextBuilders", "FakeHttpContextBuilders\FakeHttpContextBuilders.csproj", "{CEBFC025-7BCD-448B-8A2A-44E29555BB6B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakeHttpContextBuilders.Tests", "FakeHttpContextBuilders.Tests\FakeHttpContextBuilders.Tests.csproj", "{BA76E836-3333-4C82-88A1-FED76DF0A739}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{CEBFC025-7BCD-448B-8A2A-44E29555BB6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CEBFC025-7BCD-448B-8A2A-44E29555BB6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CEBFC025-7BCD-448B-8A2A-44E29555BB6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA76E836-3333-4C82-88A1-FED76DF0A739}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA76E836-3333-4C82-88A1-FED76DF0A739}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA76E836-3333-4C82-88A1-FED76DF0A739}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA76E836-3333-4C82-88A1-FED76DF0A739}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
