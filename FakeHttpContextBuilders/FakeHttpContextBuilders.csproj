@@ -13,7 +13,7 @@
         <Copyright>A package of Merge Digital</Copyright>
         <PackageLicenseFile>license.txt</PackageLicenseFile>
         <LangVersion>10</LangVersion>
-        <PackageVersion>1.0.1</PackageVersion>
+        <PackageVersion>1.0.2</PackageVersion>
         <Title>FakeHttpContextBuilders</Title>
         <PackageProjectUrl>https://github.com/caybokotze/FakeHttpContextBuilders</PackageProjectUrl>
         <AssemblyName>FakeHttpContextBuilders</AssemblyName>
